@@ -1,0 +1,44 @@
+<html>
+  <head>
+    <title>5th task</title>
+  </head>
+  <body>
+    <script>
+      const closing = {
+        ")": "(",
+        "]": "[",
+        "}": "{"
+      };
+
+      const testBracketString = s => {
+        const chars = s.split("");
+        const stack = [];
+        for (let i = 0; i < chars.length; i++) {
+          const char = chars[i];
+          if (closing[char] !== undefined) {
+            const pair = stack.pop();
+            if (closing[char] !== pair) {
+              return false;
+            }
+          } else {
+            stack.push(char);
+          }
+        }
+
+        if (stack.length > 0) {
+          return false;
+        }
+
+        return true;
+      };
+
+      const runTest = s => console.log(s, testBracketString(s));
+
+      runTest("()");
+      runTest("(()");
+      runTest("[({{}})]{}");
+      runTest("()[]{}[]{}");
+      runTest("");
+    </script>
+  </body>
+</html>
