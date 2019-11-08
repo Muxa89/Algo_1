@@ -11,50 +11,32 @@
           next: {
             v: 3,
             next: {
-              v: 4
+              v: 4,
+              next: {
+                v: 5
+              }
             }
           }
         }
       };
 
-      let el = list;
-      while (el !== undefined) {
-        console.log(el.v);
-        el = el.next;
-      }
-
+      console.log(JSON.stringify(list));
       const reverseList = root => {
-        const stack = [];
+        let prev = undefined;
+        let curr = root;
+        let next = root.next;
 
-        let el = root;
-        while (el !== undefined) {
-          stack.push(el.v);
-          el = el.next;
-        }
+        do {
+          curr.next = prev;
 
-        const newRoot = {};
-        el = newRoot;
-        let v = stack.pop();
+          prev = curr;
+          curr = next;
+          next = next && next.next || undefined;
+        } while (curr !== undefined);
 
-        while (v !== undefined) {
-          el.v = v;
-          v = stack.pop();
-          if (v !== undefined) {
-            el.next = {};
-            el = el.next;
-          }
-        }
-
-        return newRoot;
-      }
-
-      const reversed = reverseList(list);
-
-      el = reversed;
-      while (el !== undefined) {
-        console.log(el.v);
-        el = el.next;
-      }
+        return prev;
+      };
+      console.log(JSON.stringify(reverseList(list)));
     </script>
   </body>
 </html>
