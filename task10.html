@@ -1,0 +1,78 @@
+<html>
+  <head>
+    <title>10th task</title>
+  </head>
+  <body>
+    <script>
+      const printArr = arr => {
+        for (let i = 0; i < arr.length; i++) {
+          console.log(arr[i]);
+        }
+        console.log('------');
+      };
+
+      const fillMatrix = n => {
+        let xMin = 0;
+        let xMax = n;
+        let yMin = 0;
+        let yMax = n;
+
+        let res = [];
+
+        for (let i = 0; i < n; i++) {
+          res.push([]);
+        }
+
+        let val = 1;
+
+        while (val <= n ** 2) {
+          let i = xMin;
+          let j = yMin;
+
+          while (j < yMax) {
+            res[i][j] = val;
+            j++;
+            val++;
+          }
+
+          i = xMin + 1;
+          j = yMax - 1;
+          while (i < xMax) {
+            res[i][j] = val;
+            i++;
+            val++;
+          }
+
+          i = xMax - 1;
+          j = yMax - 2;
+          while (j >= yMin) {
+            res[i][j] = val;
+            j--;
+            val++;
+          }
+
+          i = xMax - 2;
+          j = yMin;
+          while (i >= xMin + 1) {
+            res[i][j] = val;
+            i--;
+            val++;
+          }
+
+          xMin++;
+          xMax--;
+          yMin++;
+          yMax--;
+        }
+
+        return res;
+      };
+
+      printArr(fillMatrix(1));
+      printArr(fillMatrix(2));
+      printArr(fillMatrix(3));
+      printArr(fillMatrix(4));
+      printArr(fillMatrix(5));
+    </script>
+  </body>
+</html>
