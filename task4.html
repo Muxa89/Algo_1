@@ -30,16 +30,13 @@
         const stack = [];
         stack.push(root);
         while (stack.length !== 0) {
-          const len = stack.length;
-          for (let i = 0; i < len; i++) {
-            const el = stack.pop();
-            console.log(el.v);
-            if (el.l !== undefined) {
-              stack.unshift(el.l);
-            }
-            if (el.r !== undefined) {
-              stack.unshift(el.r);
-            }
+          const el = stack.pop();
+          console.log(el.v);
+          if (el.l !== undefined) {
+            stack.unshift(el.l);
+          }
+          if (el.r !== undefined) {
+            stack.unshift(el.r);
           }
         }
       };
