@@ -1,0 +1,60 @@
+<html>
+  <head>
+    <title>8th task</title>
+  </head>
+  <body>
+    <script>
+      const list = {
+        v: 1,
+        next: {
+          v: 2,
+          next: {
+            v: 3,
+            next: {
+              v: 4
+            }
+          }
+        }
+      };
+
+      let el = list;
+      while (el !== undefined) {
+        console.log(el.v);
+        el = el.next;
+      }
+
+      const reverseList = root => {
+        const stack = [];
+
+        let el = root;
+        while (el !== undefined) {
+          stack.push(el.v);
+          el = el.next;
+        }
+
+        const newRoot = {};
+        el = newRoot;
+        let v = stack.pop();
+
+        while (v !== undefined) {
+          el.v = v;
+          v = stack.pop();
+          if (v !== undefined) {
+            el.next = {};
+            el = el.next;
+          }
+        }
+
+        return newRoot;
+      }
+
+      const reversed = reverseList(list);
+
+      el = reversed;
+      while (el !== undefined) {
+        console.log(el.v);
+        el = el.next;
+      }
+    </script>
+  </body>
+</html>
