@@ -1,0 +1,30 @@
+<html>
+  <head>
+    <title>6th task</title>
+  </head>
+  <body>
+    <script>
+      const printPrimeNumbers = n => {
+        const res = [];
+
+        for (let i = 2; i < n; i++) {
+          let isPrime = true;
+
+          for (let j = 2; j < i - 1; j++) {
+            if (i % j === 0) {
+              isPrime = false;
+            }
+          }
+
+          if (isPrime) {
+            res.push(i);
+          }
+        }
+
+        console.log(res.join(' '));
+      };
+
+      printPrimeNumbers(100);
+    </script>
+  </body>
+</html>
