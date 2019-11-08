@@ -1,0 +1,43 @@
+<html>
+  <head>
+    <title>2nd task</title>
+  </head>
+  <body>
+    <input type="text" id="array" value="4 -1 5 2" />
+    <button onclick="sortArray()">Sort</button>
+    <script>
+      function swapElements(arr, i, j) {
+        const temp = arr[i];
+        arr[i] = arr[j];
+        arr[j] = temp;
+      }
+
+      function arrMin(arr, i) {
+        let iMin = i;
+        let curr = i;
+        while (curr < arr.length) {
+          if (arr[curr] < arr[iMin]) {
+            iMin = curr;
+          }
+          curr++;
+        }
+        return iMin;
+      }
+
+      function sortArray() {
+        const array = (document.getElementById("array").value || "")
+          .split(" ")
+          .filter(el => el !== "");
+
+        let sortedIndex = 0;
+        while (sortedIndex < array.length - 1) {
+          const iMin = arrMin(array, sortedIndex);
+          swapElements(array, iMin, sortedIndex);
+          sortedIndex++;
+        }
+
+        console.log(array);
+      }
+    </script>
+  </body>
+</html>
