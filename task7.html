@@ -1,0 +1,35 @@
+<html>
+  <head>
+    <title>7th task</title>
+  </head>
+  <body>
+    <script>
+      const binarySearch = (arr, item) => {
+        const i = Math.floor(arr.length / 2);
+        if (arr[i] === item) {
+          return i;
+        }
+        if (arr[i] < item) {
+          return i + binarySearch(arr.slice(i, arr.length), item);
+        } else {
+          return binarySearch(arr.slice(0, i), item);
+        }
+      };
+
+      console.log(binarySearch([1, 3, 5, 7, 8, 9, 10], 1));
+      console.log(binarySearch([1, 3, 5, 7, 8, 9, 10], 3));
+      console.log(binarySearch([1, 3, 5, 7, 8, 9, 10], 5));
+      console.log(binarySearch([1, 3, 5, 7, 8, 9, 10], 7));
+      console.log(binarySearch([1, 3, 5, 7, 8, 9, 10], 8));
+      console.log(binarySearch([1, 3, 5, 7, 8, 9, 10], 9));
+      console.log(binarySearch([1, 3, 5, 7, 8, 9, 10], 10));
+
+      console.log(binarySearch([1, 3, 5, 7, 8, 9], 1));
+      console.log(binarySearch([1, 3, 5, 7, 8, 9], 3));
+      console.log(binarySearch([1, 3, 5, 7, 8, 9], 5));
+      console.log(binarySearch([1, 3, 5, 7, 8, 9], 7));
+      console.log(binarySearch([1, 3, 5, 7, 8, 9], 8));
+      console.log(binarySearch([1, 3, 5, 7, 8, 9], 9));
+    </script>
+  </body>
+</html>
