@@ -1,0 +1,42 @@
+<html>
+  <head>
+    <title>3rd task</title>
+  </head>
+  <body>
+    <script>
+      const tree = {
+        v: 1,
+        l: {
+          v: 2,
+          l: {
+            v: 4
+          },
+          r: {
+            v: 5
+          }
+        },
+        r: {
+          v: 3,
+          l: {
+            v: 6
+          },
+          r: {
+            v: 7
+          }
+        }
+      };
+
+      const deepTreeWalker = el => {
+        console.log(el.v);
+        if (el.l !== undefined) {
+          deepTreeWalker(el.l);
+        }
+        if (el.r !== undefined) {
+          deepTreeWalker(el.r);
+        }
+      };
+
+      deepTreeWalker(tree);
+    </script>
+  </body>
+</html>
