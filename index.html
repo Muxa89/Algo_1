@@ -1,0 +1,31 @@
+<html>
+  <head>
+    <title>1st task</title>
+  </head>
+  <body>
+    <input type="text" id="array" />
+    <button onclick="sortArray()">Sort</button>
+    <script>
+      function swapElements(arr, i, j) {
+        const temp = arr[i];
+        arr[i] = arr[j];
+        arr[j] = temp;
+      }
+
+      function sortArray() {
+        const array = (document.getElementById("array").value || "")
+          .split(" ")
+          .filter(el => el !== "");
+
+        for (let i = 0; i < array.length; i++) {
+          for (let j = 0; j < array.length; j++) {
+            if (array[i] < array[j]) {
+              swapElements(array, i, j);
+            }
+          }
+        }
+        console.log(array);
+      }
+    </script>
+  </body>
+</html>
