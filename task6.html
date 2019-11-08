@@ -4,27 +4,38 @@
   </head>
   <body>
     <script>
-      const printPrimeNumbers = n => {
+      const printPrimeNumbers = (() => {
         const res = [];
 
-        for (let i = 2; i < n; i++) {
-          let isPrime = true;
+        return n => {
+          if (res.length > 0 && res[res.length - 1] > n) {
+            console.log(res.filter(el => el < n).join(" "));
+            return;
+          }
 
-          for (let j = 2; j < i - 1; j++) {
-            if (i % j === 0) {
-              isPrime = false;
+          const start = res.length > 0 ? res[res.length - 1] + 1 : 2;
+          console.log(`Calculating from ${start} to ${n}`);
+          for (let i = start; i < n; i++) {
+            let isPrime = true;
+
+            for (let j = 0; j < res.length; j++) {
+              if (i % res[j] === 0 && i !== res[j]) {
+                isPrime = false;
+              }
+            }
+
+            if (isPrime) {
+              res.push(i);
             }
           }
 
-          if (isPrime) {
-            res.push(i);
-          }
-        }
+          console.log(res.join(" "));
+        };
+      })();
 
-        console.log(res.join(' '));
-      };
-
+      printPrimeNumbers(50);
       printPrimeNumbers(100);
+      printPrimeNumbers(50);
     </script>
   </body>
 </html>
